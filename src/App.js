@@ -53,16 +53,18 @@ class App extends Component {
 
 
 	change(value) {
-    	if(this.initialWidth > this.state.maxLimit) {
+    	if(this.initialWidth > this.state.maxLimit || this.initialWidth > 100) {
 		    let increaseProgress = document.getElementById(this.selectedID);
 		    increaseProgress.style.width = 100 + "%";
+		    increaseProgress.style.background = 'red';
 		    this.initialWidth = 100;
 		    this.setState({limitMessage:'You have reached maximum limit of' + ' ' + this.state.maxLimit,warning:true})
-	    } else if (this.initialWidth < 0 ) {
+	    } else if (this.initialWidth < 0) {
 		    let increaseProgress = document.getElementById(this.selectedID);
 		    increaseProgress.style.width = 0 + "%";
+		    increaseProgress.style.background = 'blue';
 		    this.initialWidth = 0;
-		    this.setState({limitMessage:'You have reached minimum limit of 0%'});
+		    this.setState({limitMessage:'You have reached minimum limit of 0%',warning:false});
 	    }else {
 		    this.initialWidth = this.initialWidth + (value);
 		    let increaseProgress = document.getElementById(this.selectedID);
@@ -113,8 +115,12 @@ class App extends Component {
 
 	      <h1>{this.state.limitMessage}</h1>
 
-	      <label>Progress Value</label>
-	      <h1>{this.initialWidth}</h1>
+
+	      {
+	      	this.state.warning ?  <label>Progress Value {this.state.maxLimit} </label> :  <label>Progress Value {this.initialWidth} </label>
+	      }
+
+
 
       </div>
     );
