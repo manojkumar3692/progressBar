@@ -16,9 +16,6 @@ class App extends Component {
         this.state.serverData = [];
         this.state.barsData = [];
         this.state.buttonData = [];
-        this.state.value = 1;
-        this.state.completed = 0;
-        this.state.id = '';
         this.state.limitMessage = '';
         this.state.warning = false;
         this.state.maxLimit = 100;
