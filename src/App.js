@@ -69,6 +69,7 @@ class App extends Component {
 		    this.initialWidth = this.initialWidth + (value);
 		    let increaseProgress = document.getElementById(this.selectedID);
 		    increaseProgress.style.width = this.initialWidth + "%";
+		    increaseProgress.style.background = 'grey';
 		    console.log(this.initialWidth);
 		    this.setState({limitMessage:'',warning:false})
 	    }
